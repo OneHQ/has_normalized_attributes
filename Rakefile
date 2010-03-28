@@ -5,10 +5,10 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "normalizations"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{normalize data prior to save}
+    gem.description = %Q{normalize data prior to save}
     gem.email = "kylejginavan@gmail.com"
-    gem.homepage = "http://github.com/kylejginavan@gmail.com/normalizations"
+    gem.homepage = "http://github.com/kylejginavan/normalizations"
     gem.authors = ["Kyle Ginavan"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
