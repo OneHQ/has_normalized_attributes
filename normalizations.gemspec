@@ -22,7 +22,9 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/constants.rb",
+     "normalizations.gemspec",
      "normalizations.tmproj",
+     "pkg/normalizations-0.0.0.gem",
      "test/helper.rb",
      "test/test_normalizations.rb"
   ]
