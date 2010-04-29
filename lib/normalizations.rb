@@ -1,12 +1,21 @@
 module Normalizations
-  mattr_accessor :zipcode, :phone, :ssn, :taxid, :dollar, :number, :percent, :spaces
+  #CONSTANT
+  ZipCode                  = /[-. )(,]/
+  Phone                    = /[-. )(,]/
+  Ssn                      = /[-. )(,]/
+  TaxID                    = /[-. )(,]/
+  Dollar                   = /[$, ]/
+  Number                   = /[, ]/
+  Percent                  = /[% ]/
+  Spaces                   = / /
 
-  self.zipcode                  = /[-. )(,]/
-  self.phone                    = /[-. )(,]/
-  self.ssn                      = /[-. )(,]/
-  self.taxid                    = /[-. )(,]/
-  self.dollar                   = /[$, ]/
-  self.number                   = /[, ]/  
-  self.percent                  = /[% ]/
-  self.spaces                   = / / 
+  module  Instance_methods
+    def normalize(type)
+      self.to_s.gsub!(type,'')
+    end
+  end
 end
+
+String.send(:include, Normalizations::Instance_methods)
+Fixnum.send(:include, Normalizations::Instance_methods)
+
