@@ -5,11 +5,19 @@ describe Sample do
     @sample = Sample.new
   end
 
-  describe "Zipcode" do
-    it{@sample.value = "12 345";@sample.value.normalize(Normalizations::ZipCode).should == "12345"}
-    it{@sample.value = "12.345";@sample.value.normalize(Normalizations::ZipCode).should == "12345"}
-    it{@sample.value = "12-345";@sample.value.normalize(Normalizations::ZipCode).should == "12345"}
-    it{@sample.value = "1,2345";@sample.value.normalize(Normalizations::ZipCode).should == "12345"}
+  describe "ZipCode" do
+    it{@sample.value = "11111";@sample.value.normalize(Normalizations::ZipCode).should == "11111"}
+    it{@sample.value = " 11 1-11 ";@sample.value.normalize(Normalizations::ZipCode).should == "11111"}
+    it{@sample.value = " 111-11 (";@sample.value.normalize(Normalizations::ZipCode).should == "11111"}
+    it{@sample.value = "11,1-11";@sample.value.normalize(Normalizations::ZipCode).should == "11111"}
+    it{@sample.value = "11.111";@sample.value.normalize(Normalizations::ZipCode).should == "11111"}
+    
+    it{@sample.value = "111111111";@sample.value.normalize(Normalizations::ZipCode).should == "111111111"}
+    it{@sample.value = "(11111) 1111";@sample.value.normalize(Normalizations::ZipCode).should == "111111111"}
+    it{@sample.value = "11111) -1111";@sample.value.normalize(Normalizations::ZipCode).should == "111111111"}
+    it{@sample.value = "11111.1111";@sample.value.normalize(Normalizations::ZipCode).should == "111111111"}
+    it{@sample.value = "11111 --1111";@sample.value.normalize(Normalizations::ZipCode).should == "111111111"}
+    it{@sample.value = " 11111,1111 ";@sample.value.normalize(Normalizations::ZipCode).should == "111111111"}
   end
 
   describe "Phone" do
