@@ -34,10 +34,12 @@ describe Sample do
   end
 
   describe "Ssn" do
-    it{@sample.value = "12-345";@sample.value.normalize(Normalizations::Ssn).should == "12345"}
-    it{@sample.value = "12.345";@sample.value.normalize(Normalizations::Ssn).should == "12345"}
-    it{@sample.value = "1-2345";@sample.value.normalize(Normalizations::Ssn).should == "12345"}
-    it{@sample.value = "1,2345";@sample.value.normalize(Normalizations::Ssn).should == "12345"}
+    it{@sample.value = "111 111 1111";@sample.value.normalize(Normalizations::Ssn).should == "1111111111"}
+    it{@sample.value = " 111 111 1111 ";@sample.value.normalize(Normalizations::Ssn).should == "1111111111"}
+    it{@sample.value = "111.111.1111";@sample.value.normalize(Normalizations::Ssn).should == "1111111111"}
+    it{@sample.value = "(111)111-1111";@sample.value.normalize(Normalizations::Ssn).should == "1111111111"}
+    it{@sample.value = "(111)1111111";@sample.value.normalize(Normalizations::Ssn).should == "1111111111"}
+    it{@sample.value = " 111-111.1111 ";@sample.value.normalize(Normalizations::Ssn).should == "1111111111"}
     
     it{@sample.value = "";@sample.value.normalize(Normalizations::Ssn).should == ""}
     it{@sample.value = nil;@sample.value.normalize(Normalizations::Ssn).should == nil}
@@ -65,6 +67,7 @@ describe Sample do
 
   describe "Number" do
     it{@sample.value = "1,23";@sample.value.normalize(Normalizations::Number).should == "123"}
+    it{@sample.value = "1 23 ";@sample.value.normalize(Normalizations::Number).should == "123"}
     
     it{@sample.value = "";@sample.value.normalize(Normalizations::Number).should == ""}
     it{@sample.value = nil;@sample.value.normalize(Normalizations::Number).should == nil}
