@@ -18,6 +18,9 @@ describe Sample do
     it{@sample.value = "11111.1111";@sample.value.normalize(Normalizations::ZipCode).should == "111111111"}
     it{@sample.value = "11111 --1111";@sample.value.normalize(Normalizations::ZipCode).should == "111111111"}
     it{@sample.value = " 11111,1111 ";@sample.value.normalize(Normalizations::ZipCode).should == "111111111"}
+    
+    it{@sample.value = "";@sample.value.normalize(Normalizations::ZipCode).should == ""}
+    it{@sample.value = nil;@sample.value.normalize(Normalizations::ZipCode).should == nil}
   end
 
   describe "Phone" do
@@ -25,6 +28,9 @@ describe Sample do
     it{@sample.value = "12.345";@sample.value.normalize(Normalizations::Phone).should == "12345"}
     it{@sample.value = "1-2345";@sample.value.normalize(Normalizations::Phone).should == "12345"}
     it{@sample.value = "1,2345";@sample.value.normalize(Normalizations::Phone).should == "12345"}
+    
+    it{@sample.value = "";@sample.value.normalize(Normalizations::Phone).should == ""}
+    it{@sample.value = nil;@sample.value.normalize(Normalizations::Phone).should == nil}
   end
 
   describe "Ssn" do
@@ -32,6 +38,9 @@ describe Sample do
     it{@sample.value = "12.345";@sample.value.normalize(Normalizations::Ssn).should == "12345"}
     it{@sample.value = "1-2345";@sample.value.normalize(Normalizations::Ssn).should == "12345"}
     it{@sample.value = "1,2345";@sample.value.normalize(Normalizations::Ssn).should == "12345"}
+    
+    it{@sample.value = "";@sample.value.normalize(Normalizations::Ssn).should == ""}
+    it{@sample.value = nil;@sample.value.normalize(Normalizations::Ssn).should == nil}
   end
 
   describe "TaxID" do
@@ -39,24 +48,43 @@ describe Sample do
     it{@sample.value = "12.345";@sample.value.normalize(Normalizations::TaxID).should == "12345"}
     it{@sample.value = "1-2345";@sample.value.normalize(Normalizations::TaxID).should == "12345"}
     it{@sample.value = "1,2345";@sample.value.normalize(Normalizations::TaxID).should == "12345"}
+    
+    it{@sample.value = "";@sample.value.normalize(Normalizations::TaxID).should == ""}
+    it{@sample.value = nil;@sample.value.normalize(Normalizations::TaxID).should == nil}
   end
 
   describe "Dollar" do
-    it{@sample.value = "$1";@sample.value.normalize(Normalizations::Dollar).should == "1"}
+    it{@sample.value = "$111111";@sample.value.normalize(Normalizations::Dollar).should == "111111"}
+    it{@sample.value = "111,111";@sample.value.normalize(Normalizations::Dollar).should == "111111"}
+    it{@sample.value = "111 111 ";@sample.value.normalize(Normalizations::Dollar).should == "111111"}
+    it{@sample.value = "$111, 111 ";@sample.value.normalize(Normalizations::Dollar).should == "111111"}
+    
+    it{@sample.value = "";@sample.value.normalize(Normalizations::Dollar).should == ""}
+    it{@sample.value = nil;@sample.value.normalize(Normalizations::Dollar).should == nil}
   end
 
   describe "Number" do
     it{@sample.value = "1,23";@sample.value.normalize(Normalizations::Number).should == "123"}
+    
+    it{@sample.value = "";@sample.value.normalize(Normalizations::Number).should == ""}
+    it{@sample.value = nil;@sample.value.normalize(Normalizations::Number).should == nil}
   end
 
   describe "Percent" do
-    it{@sample.value = "%50";@sample.value.normalize(Normalizations::Percent).should == "50"}
+    it{@sample.value = " 1 1 ";@sample.value.normalize(Normalizations::Percent).should == "11"}
+    it{@sample.value = "11%";@sample.value.normalize(Normalizations::Percent).should == "11"}
+    it{@sample.value = "%11";@sample.value.normalize(Normalizations::Percent).should == "11"}
+    it{@sample.value = "1 1 % ";@sample.value.normalize(Normalizations::Percent).should == "11"}
+    
+    it{@sample.value = "";@sample.value.normalize(Normalizations::Percent).should == ""}
+    it{@sample.value = nil;@sample.value.normalize(Normalizations::Percent).should == nil}
   end
 
   describe "Spaces" do
     it{@sample.value = "5 0";@sample.value.normalize(Normalizations::Spaces).should == "50"}
+    
+    it{@sample.value = "";@sample.value.normalize(Normalizations::Spaces).should == ""}
+    it{@sample.value = nil;@sample.value.normalize(Normalizations::Spaces).should == nil}
   end
-
-
 end
 
