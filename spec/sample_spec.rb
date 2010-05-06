@@ -24,10 +24,13 @@ describe Sample do
   end
 
   describe "Phone" do
-    it{@sample.value = "12-345";@sample.value.normalize(Normalizations::Phone).should == "12345"}
-    it{@sample.value = "12.345";@sample.value.normalize(Normalizations::Phone).should == "12345"}
-    it{@sample.value = "1-2345";@sample.value.normalize(Normalizations::Phone).should == "12345"}
-    it{@sample.value = "1,2345";@sample.value.normalize(Normalizations::Phone).should == "12345"}
+    it{@sample.value = "1111111111";@sample.value.normalize(Normalizations::Phone).should == "1111111111"}
+    it{@sample.value = "111 111 1111";@sample.value.normalize(Normalizations::Phone).should == "1111111111"}
+    it{@sample.value = " 111 111 1111 ";@sample.value.normalize(Normalizations::Phone).should == "1111111111"}
+    it{@sample.value = "111.111.1111";@sample.value.normalize(Normalizations::Phone).should == "1111111111"}
+    it{@sample.value = "(111)111-1111";@sample.value.normalize(Normalizations::Phone).should == "1111111111"}
+    it{@sample.value = "(111)1111111";@sample.value.normalize(Normalizations::Phone).should == "1111111111"}
+    it{@sample.value = " 111-111.1111 ";@sample.value.normalize(Normalizations::Phone).should == "1111111111"}
     
     it{@sample.value = "";@sample.value.normalize(Normalizations::Phone).should == ""}
     it{@sample.value = nil;@sample.value.normalize(Normalizations::Phone).should == nil}
