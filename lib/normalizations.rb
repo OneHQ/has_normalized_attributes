@@ -11,11 +11,17 @@ module Normalizations
 
   module  Instance_methods
     def normalize(type)
-      self.to_s.gsub!(type,'')
+      if self && self.match(type)
+        self.to_s.gsub!(type,'')
+      else
+        self
+      end
     end
   end
+
 end
 
 String.send(:include, Normalizations::Instance_methods)
 Fixnum.send(:include, Normalizations::Instance_methods)
+NilClass.send(:include, Normalizations::Instance_methods)
 
