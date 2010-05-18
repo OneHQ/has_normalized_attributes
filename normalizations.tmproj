@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>lib/normalizations.rb</string>
+	<string>spec/sample_spec.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,24 +21,24 @@
 	<integer>259</integer>
 	<key>metaData</key>
 	<dict>
-		<key>lib/normalizations.rb</key>
+		<key>spec/sample_spec.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>12</integer>
+				<integer>38</integer>
 				<key>line</key>
-				<integer>2</integer>
+				<integer>32</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>18</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>lib/normalizations.rb</string>
+		<string>spec/sample_spec.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
