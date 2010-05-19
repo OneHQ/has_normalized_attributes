@@ -7,7 +7,7 @@ module Normalizations
   Dollar                   = /[$, ]/
   Number                   = /[, ]/
   Percent                  = /[% ]/
-  Spaces                   = / /
+  Spaces                   = /\s/
 
   module  Instance_methods
     def normalize(type)
