@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
      "pkg/normalizations-0.0.0.gem",
      "pkg/normalizations-0.0.1.gem",
      "pkg/normalizations-0.0.2.gem",
+     "pkg/normalizations-0.0.3.gem",
      "spec/base.rb",
      "spec/sample.rb",
      "spec/sample_spec.rb"
