@@ -11,7 +11,7 @@ module Normalizations
 
   module  Instance_methods
     def normalize(type)
-      if self && self.match(type)
+      if self && self.to_s.match(type)
         self.to_s.gsub!(type,'')
       else
         self
@@ -21,7 +21,8 @@ module Normalizations
 
 end
 
-String.send(:include, Normalizations::Instance_methods)
-Fixnum.send(:include, Normalizations::Instance_methods)
-NilClass.send(:include, Normalizations::Instance_methods)
+#extends class
+[String, Fixnum, Float, NilClass].each do |klass|
+  klass.send(:include, Normalizations::Instance_methods)
+end
 

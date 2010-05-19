@@ -38,9 +38,9 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{normalize data prior to save}
   s.test_files = [
-    "spec/base.rb",
-     "spec/sample.rb",
-     "spec/sample_spec.rb"
+    "spec/sample.rb",
+     "spec/sample_spec.rb",
+     "spec/base.rb"
   ]
 
   if s.respond_to? :specification_version then
