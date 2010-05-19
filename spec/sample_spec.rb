@@ -23,6 +23,7 @@ describe Sample do
     it{@sample.value = nil;@sample.value.normalize(Normalizations::ZipCode).should == nil}
     it{@sample.value = "(111)";@sample.value.normalize(Normalizations::ZipCode).should == "111"}
     it{@sample.value = "11111";@sample.value.normalize(Normalizations::ZipCode).should == "11111"}
+    it{@sample.value = 111.11;@sample.value.normalize(Normalizations::ZipCode).should == "11111"}
   end
 
   describe "Phone" do
