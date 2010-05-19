@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{normalizations}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kyle Ginavan"]
@@ -38,9 +38,9 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{normalize data prior to save}
   s.test_files = [
-    "spec/sample.rb",
-     "spec/sample_spec.rb",
-     "spec/base.rb"
+    "spec/base.rb",
+     "spec/sample.rb",
+     "spec/sample_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
