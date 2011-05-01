@@ -1,17 +1,49 @@
-= normalizations
+== DESCRIPTION
 
-Description goes here.
+normalizations is a Ruby gem that lets you normalize user data for an improved user experience.
+It takes the messy user inputed data and normalizes it into a nice clean standard format.
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+== INSTALLATION & SETUP:
+  * sudo gem install normalizations
 
-== Copyright
+  $class CoolStuff < ActiveRecord::Base
+  $  ###### filters ######
+  $  before_validation         :normalization
+  $
+  $  protected
+  $  ###### normalizations ######
+  $  def normalization
+  $    self.dollar_before_type_cast.to_s.normalize(Normalizations::ZipCode)
+  $    self.dollar_before_type_cast.to_s.normalize(Normalizations::Phone)
+  $    self.dollar_before_type_cast.to_s.normalize(Normalizations::Ssn)
+  $    self.dollar_before_type_cast.to_s.normalize(Normalizations::TaxID)
+  $    self.dollar_before_type_cast.to_s.normalize(Normalizations::Dollar)
+  $    self.dollar_before_type_cast.to_s.normalize(Normalizations::Number)
+  $    self.dollar_before_type_cast.to_s.normalize(Normalizations::Percent)
+  $    self.dollar_before_type_cast.to_s.normalize(Normalizations::Spaces)
+  $  end
+  $end
 
-Copyright (c) 2010 Kyle Ginavan. See LICENSE for details.
+== COPYRIGHT
+
+Copyright (c) 2011 Kyle Ginavan
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+See LICENSE for details.
