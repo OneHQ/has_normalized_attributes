@@ -1,13 +1,13 @@
 module Normalizations
   #CONSTANT
-  ZipCode                  = /[-. )(,]/
-  Phone                    = /[-. )(,]/
-  Ssn                      = /[-. )(,]/
-  TaxID                    = /[-. )(,]/
-  Dollar                   = /[$, ]/
-  Number                   = /[, ]/
-  Percent                  = /[% ]/
-  Spaces                   = /\s/
+  ZIPCODE                  = /[-. )(,]/
+  PHONE                    = /[-. )(,]/
+  SSN                      = /[-. )(,]/
+  TAXID                    = /[-. )(,]/
+  DOLLAR                   = /[$, ]/
+  NUMBER                   = /[, ]/
+  PERCENT                  = /[% ]/
+  SPACES                   = /\s/
 
   module  Instance_methods
     def normalize(type)
