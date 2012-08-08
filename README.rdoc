@@ -1,3 +1,5 @@
+== Normalizations {<img src="https://secure.travis-ci.org/kylejginavan/normalizations.png"/>}[http://travis-ci.org/kylejginavan/normalizations]
+
 == DESCRIPTION
 
 normalizations is a Ruby gem that lets you normalize user data for an improved user experience.
