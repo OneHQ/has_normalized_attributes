@@ -8,6 +8,8 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kyle Ginavan"]
   s.date = %q{2010-05-18}
+  s.homepage = "https://github.com/kylejginavan/normalizations"
+  s.summary =  %q{gem for Rails 3 to normalize data prior to save}
   s.description = %q{normalize data prior to save}
   s.email = %q{kylejginavan@gmail.com}
   s.rubyforge_project = "normalizations"
