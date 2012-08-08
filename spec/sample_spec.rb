@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/base'
+require 'spec_helper'
 
 describe Sample do
   before(:each) do
@@ -23,7 +23,8 @@ describe Sample do
     it{@sample.value = nil;@sample.value.normalize(Normalizations::ZIPCODE).should == nil}
     it{@sample.value = "(111)";@sample.value.normalize(Normalizations::ZIPCODE).should == "111"}
     it{@sample.value = "11111";@sample.value.normalize(Normalizations::ZIPCODE).should == "11111"}
-    it{@sample.value = 111.11;@sample.value.normalize(Normalizations::ZIPCODE).should == "11111"}
+    it{@sample.value = 111.11;@sample.value.normalize(Normalizations::ZIPCODE).should == 111.11}
+    it{@sample.value = 2;@sample.value.normalize(Normalizations::ZIPCODE).should == 2}
   end
 
   describe "PHONE" do
@@ -37,6 +38,7 @@ describe Sample do
 
     it{@sample.value = "";@sample.value.normalize(Normalizations::PHONE).should == ""}
     it{@sample.value = nil;@sample.value.normalize(Normalizations::PHONE).should == nil}
+    it{@sample.value = 111.1111;@sample.value.normalize(Normalizations::PHONE).should == 111.1111}
   end
 
   describe "SSN" do
@@ -49,6 +51,7 @@ describe Sample do
 
     it{@sample.value = "";@sample.value.normalize(Normalizations::SSN).should == ""}
     it{@sample.value = nil;@sample.value.normalize(Normalizations::SSN).should == nil}
+    it{@sample.value = 111.1111;@sample.value.normalize(Normalizations::SSN).should == 111.1111}
   end
 
   describe "TAXID" do
@@ -59,6 +62,8 @@ describe Sample do
 
     it{@sample.value = "";@sample.value.normalize(Normalizations::TAXID).should == ""}
     it{@sample.value = nil;@sample.value.normalize(Normalizations::TAXID).should == nil}
+    it{@sample.value = 1.2345;@sample.value.normalize(Normalizations::TAXID).should == 1.2345}
+
   end
 
   describe "DOLLAR" do
@@ -69,6 +74,8 @@ describe Sample do
 
     it{@sample.value = "";@sample.value.normalize(Normalizations::DOLLAR).should == ""}
     it{@sample.value = nil;@sample.value.normalize(Normalizations::DOLLAR).should == nil}
+    it{@sample.value = 111.111;@sample.value.normalize(Normalizations::DOLLAR).should == 111.111}
+
   end
 
   describe "NUMBER" do
@@ -77,6 +84,7 @@ describe Sample do
 
     it{@sample.value = "";@sample.value.normalize(Normalizations::NUMBER).should == ""}
     it{@sample.value = nil;@sample.value.normalize(Normalizations::NUMBER).should == nil}
+    it{@sample.value = 123;@sample.value.normalize(Normalizations::NUMBER).should == 123}
   end
 
   describe "PERCENT" do
@@ -96,4 +104,3 @@ describe Sample do
     it{@sample.value = nil;@sample.value.normalize(Normalizations::SPACES).should == nil}
   end
 end
-

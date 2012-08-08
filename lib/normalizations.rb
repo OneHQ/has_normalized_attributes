@@ -9,10 +9,10 @@ module Normalizations
   PERCENT                  = /[% ]/
   SPACES                   = /\s/
 
-  module  Instance_methods
+  module Instance_methods
     def normalize(type)
-      if self && self.to_s.match(type)
-        self.to_s.gsub!(type,'')
+      if self && self.is_a?(String) && self.match(type)
+        self.gsub!(type,'')
       else
         self
       end
