@@ -2,29 +2,30 @@
 
 == DESCRIPTION
 
-normalizations is a Ruby gem that lets you normalize user data for an improved user experience.
+normalizations is a Ruby on Rails gem that lets you normalize user data for an improved user experience.
 It takes the messy user inputed data and normalizes it into a nice clean standard format.
 
 == INSTALLATION & SETUP:
-  * sudo gem install normalizations
 
-  $class CoolStuff < ActiveRecord::Base
-  $  ###### filters ######
-  $  before_validation         :normalization
-  $
-  $  protected
-  $  ###### normalizations ######
-  $  def normalization
-  $    self.dollar_before_type_cast.normalize_zipcode
-  $    self.phone_number.normalize_phone
-  $    self.social_security_number.normalize_ssn
-  $    self.taxid.normalize_taxid
-  $    self.dollar_before_type_cast.normalize_dollar
-  $    self.number_before_type_cast.normalize_number
-  $    self.percent_before_type_cast.normalize_percent
-  $    self.field.normalize_spaces
-  $  end
-  $end
+add in your Gemfile:
+
+  gem 'normalizations'
+
+in your model:
+
+  has_normalized_attributes :field => :normalization_type
+
+for example:
+
+  class CoolStuff < ActiveRecord::Base
+    has_normalized_attributes :phone_attr => :phone, :zipcode_attr => :zipcode, :ssn_attr => :ssn,
+                              :dollar_attr => :dollar, :taxid_attr => :taxid, :number_attr => :number,
+                              :percent_attr => :percent, :spaces_attr => :spaces
+  end  
+
+== Normalization availables
+  :phone, :zipcode, :ssn, :dollar, :taxid, :number, :percent, :spaces
+
 
 == COPYRIGHT
 
