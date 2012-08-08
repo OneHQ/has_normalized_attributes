@@ -9,20 +9,22 @@ module Normalizations
   PERCENT                  = /[% ]/
   SPACES                   = /\s/
 
-  module Instance_methods
-    def normalize(type)
-      if self && self.is_a?(String) && self.match(type)
-        self.gsub!(type,'')
-      else
-        self
+  module InstanceMethods
+    
+    def self.normalizations(*args)
+      args.each do |arg|
+        reg_exp = Normalizations.const_get(arg.upcase)
+        define_method "normalize_#{arg}" do
+          self && is_a?(String) && match(reg_exp) ? gsub!(reg_exp,'') : self
+        end
       end
     end
+
+    #loading all methods dynamically
+    normalizations :phone, :zipcode, :ssn, :taxid, :dollar, :number, :percent, :spaces
   end
-
 end
-
 #extends class
 [String, Fixnum, Float, NilClass].each do |klass|
-  klass.send(:include, Normalizations::Instance_methods)
+  klass.send(:include, Normalizations::InstanceMethods)
 end
-

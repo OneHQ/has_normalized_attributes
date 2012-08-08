@@ -15,14 +15,14 @@ It takes the messy user inputed data and normalizes it into a nice clean standar
   $  protected
   $  ###### normalizations ######
   $  def normalization
-  $    self.dollar_before_type_cast.to_s.normalize(Normalizations::ZipCode)
-  $    self.phone_number.normalize(Normalizations::Phone)
-  $    self.social_security_number.normalize(Normalizations::Ssn)
-  $    self.taxid.normalize(Normalizations::TaxID)
-  $    self.dollar_before_type_cast.to_s.normalize(Normalizations::Dollar)
-  $    self.number_before_type_cast.to_s.normalize(Normalizations::Number)
-  $    self.percent_before_type_cast.to_s.normalize(Normalizations::Percent)
-  $    self.field.normalize(Normalizations::Spaces)
+  $    self.dollar_before_type_cast.to_s.normalize_zipcode
+  $    self.phone_number.normalize_phone
+  $    self.social_security_number.normalize_ssn
+  $    self.taxid.normalize_taxid
+  $    self.dollar_before_type_cast.to_s.normalize_dollar
+  $    self.number_before_type_cast.to_s.normalize_number
+  $    self.percent_before_type_cast.to_s.normalize_percent
+  $    self.field.normalize_spaces
   $  end
   $end
 
