@@ -15,13 +15,13 @@ It takes the messy user inputed data and normalizes it into a nice clean standar
   $  protected
   $  ###### normalizations ######
   $  def normalization
-  $    self.dollar_before_type_cast.to_s.normalize_zipcode
+  $    self.dollar_before_type_cast.normalize_zipcode
   $    self.phone_number.normalize_phone
   $    self.social_security_number.normalize_ssn
   $    self.taxid.normalize_taxid
-  $    self.dollar_before_type_cast.to_s.normalize_dollar
-  $    self.number_before_type_cast.to_s.normalize_number
-  $    self.percent_before_type_cast.to_s.normalize_percent
+  $    self.dollar_before_type_cast.normalize_dollar
+  $    self.number_before_type_cast.normalize_number
+  $    self.percent_before_type_cast.normalize_percent
   $    self.field.normalize_spaces
   $  end
   $end
