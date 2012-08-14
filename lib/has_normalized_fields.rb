@@ -1,4 +1,4 @@
-module Normalizations
+module HasNormalizedFields
   extend ActiveSupport::Concern
 
   #CONSTANT
@@ -14,7 +14,7 @@ module Normalizations
   #instance methods
   def self.normalizations(*args)
     args.each do |arg|
-      reg_exp = Normalizations.const_get(arg.upcase)
+      reg_exp = HasNormalizedFields.const_get(arg.upcase)
       define_method "normalize_#{arg}" do |value|
         value && value.is_a?(String) && value.match(reg_exp) ? value.gsub!(reg_exp,'') : value
       end
@@ -47,4 +47,4 @@ module Normalizations
 end
 
 #include activerecord
-ActiveRecord::Base.send :include, Normalizations
+ActiveRecord::Base.send :include, HasNormalizedFields
