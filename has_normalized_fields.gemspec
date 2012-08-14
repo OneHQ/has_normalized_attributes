@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{has_normalized_fields is a Ruby on Rails gem that lets you normalize user data for an improved user experience.
 It takes the messy user inputed data and normalizes it into a nice clean standard format.}
   s.email = %q{kylejginavan@gmail.com}
-  s.rubyforge_project = "has_normalization_fields"
+  s.rubyforge_project = "has_normalized_fields"
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }

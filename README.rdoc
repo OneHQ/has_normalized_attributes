@@ -9,11 +9,11 @@ It takes the messy user inputed data and normalizes it into a nice clean standar
 
 add in your Gemfile:
 
-  gem 'has_normalization_fields'
+  gem 'has_normalized_fields'
 
 in your model:
 
-  has_normalized_attributes :field => :normalization_type
+  has_normalized_attributes :field => :normalized_type
 
 for example:
 
@@ -23,7 +23,7 @@ for example:
                               :percent_attr => :percent, :spaces_attr => :spaces
   end  
 
-== Normalization availables
+== Normalizations availables
   :phone, :zipcode, :ssn, :dollar, :taxid, :number, :percent, :spaces
 
 
