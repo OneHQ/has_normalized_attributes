@@ -15,8 +15,8 @@ module HasNormalizedFields
   def self.normalizations(*args)
     args.each do |arg|
       reg_exp = HasNormalizedFields.const_get(arg.upcase)
-      define_method "normalize_#{arg}" do |value|
-        value && value.is_a?(String) && value.match(reg_exp) ? value.gsub!(reg_exp,'') : value
+      define_method "normalize_#{arg}" do
+        self && is_a?(String) && match(reg_exp) ? gsub!(reg_exp,'') : self
       end
     end
   end
@@ -33,10 +33,9 @@ module HasNormalizedFields
       end
 
       args.each do |field, normalization_type|
-        raise ArgumentError, "attribute #{field} no belongs to current class" unless columns.map(&:name).include?(field.to_s)
         define_method "#{field.to_s}=" do |value|
           if value.present?
-            send "normalize_#{normalization_type.downcase}".to_sym, value.to_s
+            value.send("normalize_#{normalization_type.downcase}".to_sym)
           end
           super value
         end
@@ -46,5 +45,9 @@ module HasNormalizedFields
   end
 end
 
+#extend these classes
+[String, Fixnum, Float, NilClass].each do |klass|
+  klass.send(:include, HasNormalizedFields)
+end
 #include activerecord
 ActiveRecord::Base.send :include, HasNormalizedFields
