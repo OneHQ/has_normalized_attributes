@@ -8,7 +8,7 @@ module HasNormalizedFields
   TAXID                    = /[-. )(,]/
   DOLLAR                   = /[$, ]/
   NUMBER                   = /[, ]/
-  PERCENT                  = /[% ]/
+  PERCENT                  = /[%, ]/
   SPACES                   = /\s/
 
   #instance methods
