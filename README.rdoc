@@ -1,4 +1,4 @@
-== Normalizations {<img src="https://secure.travis-ci.org/kylejginavan/normalizations.png"/>}[http://travis-ci.org/kylejginavan/normalizations]
+== HasNormalizedFields {<img src="https://secure.travis-ci.org/kylejginavan/normalizations.png"/>}[http://travis-ci.org/kylejginavan/normalizations]
 
 == DESCRIPTION
 
@@ -9,7 +9,7 @@ It takes the messy user inputed data and normalizes it into a nice clean standar
 
 add in your Gemfile:
 
-  gem 'normalizations'
+  gem 'has_normalization_fields'
 
 in your model:
 

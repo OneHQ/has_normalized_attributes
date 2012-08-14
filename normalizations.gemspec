@@ -4,7 +4,7 @@ require "version"
 
 Gem::Specification.new do |s|
   s.name = %q{normalizations}
-  s.version = Normalizations::VERSION
+  s.version = HasNormalizedFields::VERSION
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kyle Ginavan"]
   s.date = %q{2010-05-18}
@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{normalizations is a Ruby on Rails gem that lets you normalize user data for an improved user experience.
 It takes the messy user inputed data and normalizes it into a nice clean standard format.}
   s.email = %q{kylejginavan@gmail.com}
-  s.rubyforge_project = "normalizations"
+  s.rubyforge_project = "has_normalization_fields"
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
