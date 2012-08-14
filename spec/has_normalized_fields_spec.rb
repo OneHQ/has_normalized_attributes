@@ -23,19 +23,6 @@ describe "HasNormalizedFields" do
         Resource.send(:has_normalized_attributes)
       }.to raise_error(ArgumentError, 'Must define the fields you want to be normalize with has_normalized_attributes :field_one => "phone", :field_two => "zipcode"')
     end
-
-    it "should raise an error if has fields that no belongs to the current class" do
-      expect {
-        Resource.send(:has_normalized_attributes, {:food => :phone})
-      }.to raise_error(ArgumentError, 'attribute food no belongs to current class')
-    end
-
-    it "should raise an error if has fields that no belongs to the current class" do
-      expect {
-        Resource.send(:has_normalized_attributes, :food)
-      }.to raise_error(ArgumentError, 'Must define the fields you want to be normalize with has_normalized_attributes :field_one => "phone", :field_two => "zipcode"')
-    end
-
   end
 
   describe "#phone" do
