@@ -3,7 +3,7 @@ module HasNormalizedFields
 
   #CONSTANT
   ZIPCODE                  = /[-. )(,]/
-  PHONE                    = /[-. )(,]/
+  PHONE                    = /[-. )(,]|(^0)/
   SSN                      = /[-. )(,]/
   TAXID                    = /[-. )(,]/
   DOLLAR                   = /[$, ]/
