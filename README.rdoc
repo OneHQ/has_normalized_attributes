@@ -1,15 +1,15 @@
-== HasNormalizedFields {<img src="https://secure.travis-ci.org/kylejginavan/has_normalized_fields.png"/>}[http://travis-ci.org/kylejginavan/has_normalized_fields]
+== HasNormalizedAttributes {<img src="https://secure.travis-ci.org/kylejginavan/has_normalized_attributes.png"/>}[http://travis-ci.org/kylejginavan/has_normalized_attributes]
 
 == DESCRIPTION
 
-has_normalized_fields is a Ruby on Rails gem that lets you normalize user data for an improved user experience.
+has_normalized_attributes is a Ruby on Rails gem that lets you normalize user data for an improved user experience.
 It takes the messy user inputed data and normalizes it into a nice clean standard format.
 
 == INSTALLATION & SETUP:
 
 add in your Gemfile:
 
-  gem 'has_normalized_fields'
+  gem 'has_normalized_attributes'
 
 in your model:
 

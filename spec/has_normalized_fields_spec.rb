@@ -6,7 +6,7 @@ class Resource < ActiveRecord::Base
                             :percent_attr => :percent, :spaces_attr => :spaces
 end
 
-describe "HasNormalizedFields" do
+describe "HasNormalizedAttributes" do
   before(:each) do
     @resource = Resource.new
   end

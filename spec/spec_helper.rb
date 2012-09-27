@@ -15,7 +15,7 @@ load(File.dirname(__FILE__) + "/db/schema.rb")
 # Load in our code
 $LOAD_PATH.unshift "#{File.dirname(__FILE__)}/../lib"
 
-require 'has_normalized_fields'
+require 'has_normalized_attributes'
 
 RSpec.configure do |config|
 
