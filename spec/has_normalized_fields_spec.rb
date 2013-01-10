@@ -3,7 +3,7 @@ require 'spec_helper'
 class Resource < ActiveRecord::Base
   has_normalized_attributes :phone_attr => :phone, :zipcode_attr => :zipcode, :ssn_attr => :ssn,
                             :dollar_attr => :dollar, :taxid_attr => :taxid, :number_attr => :number,
-                            :percent_attr => :percent, :spaces_attr => :spaces
+                            :percent_attr => :percent, :spaces_attr => :spaces, :strip_attr => :strip
 end
 
 describe "HasNormalizedAttributes" do
@@ -111,5 +111,12 @@ describe "HasNormalizedAttributes" do
     it{@resource.spaces_attr = nil;@resource.spaces_attr.should == nil}
   end
 
+  describe "#strip" do
+    it{@resource.strip_attr = "text "; @resource.strip_attr.should == "text"}
+    it{@resource.strip_attr = " text"; @resource.strip_attr.should == "text"}
+    it{@resource.strip_attr = " text "; @resource.strip_attr.should == "text"}
+    it{@resource.strip_attr = " some text"; @resource.strip_attr.should == "some text"}
+    it{@resource.strip_attr = " some text "; @resource.strip_attr.should == "some text"}
+  end
 
 end

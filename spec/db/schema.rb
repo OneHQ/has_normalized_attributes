@@ -9,6 +9,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   "number_attr"
     t.string   "percent_attr"
     t.string   "spaces_attr"
+    t.string   "strip_attr"
   end
 
 end

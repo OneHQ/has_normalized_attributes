@@ -14,15 +14,19 @@ module HasNormalizedAttributes
   #instance methods
   def self.normalizations(*args)
     args.each do |arg|
-      reg_exp = HasNormalizedAttributes.const_get(arg.upcase)
       define_method "normalize_#{arg}" do
-        self && is_a?(String) && match(reg_exp) ? gsub!(reg_exp,'') : self
+        if arg == :strip
+          self ? self.strip! : self
+        else
+          reg_exp = HasNormalizedAttributes.const_get(arg.upcase)
+          self && is_a?(String) && match(reg_exp) ? gsub!(reg_exp,'') : self
+        end
       end
     end
   end
 
   #loading all methods dynamically
-  normalizations :phone, :zipcode, :ssn, :taxid, :dollar, :number, :percent, :spaces
+  normalizations :phone, :zipcode, :ssn, :taxid, :dollar, :number, :percent, :spaces, :strip
 
 
   module ClassMethods
