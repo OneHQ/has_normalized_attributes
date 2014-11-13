@@ -49,8 +49,8 @@ module HasNormalizedAttributes
   end
 end
 
-#extend these classes
-[String, Fixnum, Float, NilClass].each do |klass|
+#extend these classes - Numeric is a parent class for all of Ruby's numeric types.
+[String, Numeric, NilClass].each do |klass|
   klass.send(:include, HasNormalizedAttributes)
 end
 #include activerecord
