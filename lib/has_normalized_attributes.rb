@@ -4,7 +4,7 @@ module HasNormalizedAttributes
     def self.normalizations(*args)
       args.each do |arg|
         define_method "normalize_#{ arg }" do
-          (defined?(super) ? super() : self).tap do |result|
+          super().tap do |result|
             result.sub! /\A\((.*)\)\Z/, '-\1'
           end
         end
