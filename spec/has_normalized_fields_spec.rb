@@ -87,6 +87,10 @@ describe "HasNormalizedAttributes" do
     it{@resource.dollar_attr = "$111, 111 ";@resource.dollar_attr.should == "111111"}
     it{@resource.dollar_attr = "";@resource.dollar_attr.should == ""}
     it{@resource.dollar_attr = nil;@resource.dollar_attr.should == nil}
+    it{@resource.dollar_attr = 111111.51;@resource.dollar_attr.should == "111111.51"}
+    it{@resource.dollar_attr = "(321.45)";@resource.dollar_attr.should == "-321.45"}
+    it{@resource.dollar_attr = "$(321.45)";@resource.dollar_attr.should == "-321.45"}
+    it{@resource.dollar_attr = "($321.45)";@resource.dollar_attr.should == "-321.45"}
   end
 
   describe "#number" do
@@ -94,6 +98,9 @@ describe "HasNormalizedAttributes" do
     it{@resource.number_attr = "1 23 ";@resource.number_attr.should == "123"}
     it{@resource.number_attr = "";@resource.number_attr.should == ""}
     it{@resource.number_attr = nil;@resource.number_attr.should == nil}
+    it{@resource.dollar_attr = 111111.51;@resource.dollar_attr.should == "111111.51"}
+    it{@resource.dollar_attr = "(321.45)";@resource.dollar_attr.should == "-321.45"}
+    it{@resource.dollar_attr = "-321.45";@resource.dollar_attr.should == "-321.45"}
   end
 
   describe "#percent" do
