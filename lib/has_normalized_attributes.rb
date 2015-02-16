@@ -11,7 +11,7 @@ module HasNormalizedAttributes
         # and then use the result from that to check for parentheses.
         define_method "normalize_#{ arg }" do
           super().tap do |result|
-            result.sub! /\A\((.*)\)\Z/, '-\1'
+            result.sub! /\A\((.*)\)\Z/, '-\1' if result.respond_to?(:sub!)
           end
         end
       end
