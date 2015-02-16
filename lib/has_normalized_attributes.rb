@@ -1,5 +1,18 @@
 module HasNormalizedAttributes
   extend ActiveSupport::Concern
+  prepend Module.new {
+    def self.normalizations(*args)
+      args.each do |arg|
+        define_method "normalize_#{ arg }" do
+          (defined?(super) ? super() : self).tap do |result|
+            result.sub! /\A\((.*)\)\Z/, '-\1'
+          end
+        end
+      end
+    end
+
+    normalizations :number, :dollar
+  }
 
   #CONSTANT
   ZIPCODE                  = /[-. )(,]/
