@@ -1,6 +1,7 @@
 require "active_support"
 require "active_record"
 require "database_cleaner"
+require "yaml"
 
 ENV['debug'] = 'test' unless ENV['debug']
 

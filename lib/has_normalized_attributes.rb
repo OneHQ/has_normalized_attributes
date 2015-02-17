@@ -1,6 +1,25 @@
 module HasNormalizedAttributes
   extend ActiveSupport::Concern
 
+  # Prepending a dynamically defined module to add functionality to the current normalize_ methods.
+  # This is similar to alias_method_chain, but accomplished in a cleaner way using inheritance.
+  prepend Module.new {
+    def self.normalizations(*args)
+      args.each do |arg|
+        # Convert outer parentheses into a negative (-) sign on the result of the super method.
+        # E.g. `normalize_dollar` will first call the original `normalize_dollar` method (super)
+        # and then use the result from that to check for parentheses.
+        define_method "normalize_#{ arg }" do
+          super().tap do |result|
+            result.sub! /\A\((.*)\)\Z/, '-\1' if result.respond_to?(:sub!)
+          end
+        end
+      end
+    end
+
+    normalizations :number, :dollar
+  }
+
   #CONSTANT
   ZIPCODE                  = /[-. )(,]/
   PHONE                    = /[-. )(,]|(^0)/
