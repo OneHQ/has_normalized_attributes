@@ -37,6 +37,7 @@ describe "HasNormalizedAttributes" do
     it{@resource.phone_attr = "0111-111.1111 "; @resource.phone_attr.should == "1111111111"}
     it{@resource.phone_attr = "1011-111.1111 "; @resource.phone_attr.should == "10111111111"}
     it{@resource.phone_attr = "111-0222.333 "; @resource.phone_attr.should == "1110222333"}
+    it{@resource.phone_attr = "111-0222.333\t"; @resource.phone_attr.should == "1110222333"}
     it{@resource.phone_attr = ""; @resource.phone_attr.should == ""}
     it{@resource.phone_attr = nil; @resource.phone_attr.should == nil}
   end
@@ -50,6 +51,7 @@ describe "HasNormalizedAttributes" do
     it{@resource.zipcode_attr = "111111111"; @resource.zipcode_attr.should == "111111111"}
     it{@resource.zipcode_attr = "(11111) 1111"; @resource.zipcode_attr.should == "111111111"}
     it{@resource.zipcode_attr = "11111) -1111"; @resource.zipcode_attr.should == "111111111"}
+    it{@resource.zipcode_attr = "11111\t-1111"; @resource.zipcode_attr.should == "111111111"}
     it{@resource.zipcode_attr = "11111.1111"; @resource.zipcode_attr.should == "111111111"}
     it{@resource.zipcode_attr = "11111 --1111"; @resource.zipcode_attr.should == "111111111"}
     it{@resource.zipcode_attr = " 11111,1111 "; @resource.zipcode_attr.should == "111111111"}
@@ -67,6 +69,7 @@ describe "HasNormalizedAttributes" do
     it{@resource.ssn_attr = "(111)111-1111"; @resource.ssn_attr.should == "1111111111"}
     it{@resource.ssn_attr = "(111)1111111"; @resource.ssn_attr.should == "1111111111"}
     it{@resource.ssn_attr = " 111-111.1111 "; @resource.ssn_attr.should == "1111111111"}
+    it{@resource.ssn_attr = " 111-111.1111\t"; @resource.ssn_attr.should == "1111111111"}
     it{@resource.ssn_attr = ""; @resource.ssn_attr.should == ""}
     it{@resource.ssn_attr = nil; @resource.ssn_attr.should == nil}
   end
@@ -76,6 +79,8 @@ describe "HasNormalizedAttributes" do
     it{@resource.taxid_attr = "12.345"; @resource.taxid_attr.should == "12345"}
     it{@resource.taxid_attr = "1-2345"; @resource.taxid_attr.should == "12345"}
     it{@resource.taxid_attr = "1,2345"; @resource.taxid_attr.should == "12345"}
+    it{@resource.taxid_attr = "1,2345 "; @resource.taxid_attr.should == "12345"}
+    it{@resource.taxid_attr = "1,2345\t"; @resource.taxid_attr.should == "12345"}
     it{@resource.taxid_attr = ""; @resource.taxid_attr.should == ""}
     it{@resource.taxid_attr = nil; @resource.taxid_attr.should == nil}
   end
@@ -85,6 +90,7 @@ describe "HasNormalizedAttributes" do
     it{@resource.dollar_attr = "111,111";@resource.dollar_attr.should == "111111"}
     it{@resource.dollar_attr = "111 111 ";@resource.dollar_attr.should == "111111"}
     it{@resource.dollar_attr = "$111, 111 ";@resource.dollar_attr.should == "111111"}
+    it{@resource.dollar_attr = "$111\t111\t";@resource.dollar_attr.should == "111111"}
     it{@resource.dollar_attr = "";@resource.dollar_attr.should == ""}
     it{@resource.dollar_attr = nil;@resource.dollar_attr.should == nil}
     it{@resource.dollar_attr = 111111.51;@resource.dollar_attr.should == "111111.51"}
@@ -96,6 +102,7 @@ describe "HasNormalizedAttributes" do
   describe "#number" do
     it{@resource.number_attr = "1,23";@resource.number_attr.should == "123"}
     it{@resource.number_attr = "1 23 ";@resource.number_attr.should == "123"}
+    it{@resource.number_attr = "1\t23\t";@resource.number_attr.should == "123"}
     it{@resource.number_attr = "";@resource.number_attr.should == ""}
     it{@resource.number_attr = nil;@resource.number_attr.should == nil}
     it{@resource.dollar_attr = 111111.51;@resource.dollar_attr.should == "111111.51"}
@@ -108,12 +115,14 @@ describe "HasNormalizedAttributes" do
     it{@resource.percent_attr = "11%";@resource.percent_attr.should == "11"}
     it{@resource.percent_attr = "%11";@resource.percent_attr.should == "11"}
     it{@resource.percent_attr = "1 1 % ";@resource.percent_attr.should == "11"}
+    it{@resource.percent_attr = "1\t1\t%\t";@resource.percent_attr.should == "11"}
     it{@resource.percent_attr = "";@resource.percent_attr.should == ""}
     it{@resource.percent_attr = nil;@resource.percent_attr.should == nil}
   end
 
   describe "#spaces" do
     it{@resource.spaces_attr = "5 0";@resource.spaces_attr.should == "50"}
+    it{@resource.spaces_attr = "5\t0";@resource.spaces_attr.should == "50"}
     it{@resource.spaces_attr = "";@resource.spaces_attr.should == ""}
     it{@resource.spaces_attr = nil;@resource.spaces_attr.should == nil}
   end

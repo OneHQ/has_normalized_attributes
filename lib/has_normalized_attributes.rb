@@ -21,13 +21,13 @@ module HasNormalizedAttributes
   }
 
   #CONSTANT
-  ZIPCODE                  = /[-. )(,]/
-  PHONE                    = /[-. )(,]|(^0)/
-  SSN                      = /[-. )(,]/
-  TAXID                    = /[-. )(,]/
-  DOLLAR                   = /[$, ]/
-  NUMBER                   = /[, ]/
-  PERCENT                  = /[%, ]/
+  ZIPCODE                  = /[-.\s)(,]/
+  PHONE                    = /[-.\s)(,]|(^0)/
+  SSN                      = /[-.\s)(,]/
+  TAXID                    = /[-.\s)(,]/
+  DOLLAR                   = /[$,\s]/
+  NUMBER                   = /[,\s]/
+  PERCENT                  = /[%,\s]/
   SPACES                   = /\s/
 
   #instance methods
