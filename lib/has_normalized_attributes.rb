@@ -10,9 +10,8 @@ module HasNormalizedAttributes
         # E.g. `normalize_dollar` will first call the original `normalize_dollar` method (super)
         # and then use the result from that to check for parentheses.
         define_method "normalize_#{ arg }" do
-          super().tap do |result|
-            result.sub! /\A\((.*)\)\Z/, '-\1' if result.respond_to?(:sub!)
-          end
+          result = super()
+          result.respond_to?(:sub) ? result.sub(/\A\((.*)\)\Z/, '-\1') : result
         end
       end
     end
@@ -35,10 +34,10 @@ module HasNormalizedAttributes
     args.each do |arg|
       define_method "normalize_#{arg}" do
         if arg == :strip
-          self ? self.strip! : self
+          self ? self.strip : self
         else
           reg_exp = HasNormalizedAttributes.const_get(arg.upcase)
-          self && is_a?(String) && match(reg_exp) ? gsub!(reg_exp,'') : self
+          self && is_a?(String) && match(reg_exp) ? gsub(reg_exp,'') : self
         end
       end
     end
@@ -58,9 +57,11 @@ module HasNormalizedAttributes
       args.each do |field, normalization_type|
         define_method "#{field.to_s}=" do |value|
           if value.present?
-            value.send("normalize_#{normalization_type.downcase}".to_sym)
+            normalized_value = value.send("normalize_#{normalization_type.downcase}".to_sym)
+          else
+            normalized_value = value
           end
-          super value
+          super normalized_value
         end
       end
 
