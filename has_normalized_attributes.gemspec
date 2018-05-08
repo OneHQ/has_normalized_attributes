@@ -27,6 +27,7 @@ It takes the messy user inputed data and normalizes it into a nice clean standar
   # s.rubyforge_project = "has_normalized_attributes"
 
   s.add_development_dependency "activerecord",            ">= 3.1.0"
+  s.add_development_dependency "byebug"
   s.add_development_dependency "database_cleaner"
   s.add_development_dependency "rspec_junit_formatter",   "~> 0.3", ">= 0.3.0"
   s.add_development_dependency "rspec"
