@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-lib = File.expand_path('../lib/', __FILE__)
+lib = File.expand_path("../lib/", __FILE__)
 $:.unshift lib unless $:.include?(lib)
 
 require "has_normalized_attributes/version"
@@ -26,9 +26,9 @@ It takes the messy user inputed data and normalizes it into a nice clean standar
   s.summary =  %q{Ruby on Rails gem for normalize data prior to save}
   # s.rubyforge_project = "has_normalized_attributes"
 
+  s.add_development_dependency "activerecord",            ">= 3.1.0"
+  s.add_development_dependency "database_cleaner"
+  s.add_development_dependency "rspec_junit_formatter",   "~> 0.3", ">= 0.3.0"
   s.add_development_dependency "rspec"
-  s.add_development_dependency("activerecord", ['>= 3.1.0'])
-  s.add_development_dependency("sqlite3")
-  s.add_development_dependency('database_cleaner')
+  s.add_development_dependency "sqlite3"
 end
-
