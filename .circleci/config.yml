@@ -7,17 +7,8 @@ defaults: &defaults
   docker:
     - image: circleci/ruby:2.3.6-stretch-node
       environment:
-        - DBHOST: localhost
-        - DBNAME: has_normalized_attributes_test
-        - DBPASSWORD: Vdm9omJt8Z3MCV4N
-        - DBUSER: test_user
         - RACK_ENV: test
         - RAILS_ENV: test
-    - image: circleci/postgres:10.3-alpine-ram
-      environment:
-        - POSTGRES_DB: has_normalized_attributes_test
-        - POSTGRES_USER: test_user
-        - POSTGRES_PASSWORD: Vdm9omJt8Z3MCV4N
 
 version: 2
 jobs:
@@ -40,20 +31,12 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            curl -sS https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-            echo "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
-            sudo apt-get update && sudo apt-get install postgresql-client-10
             bundle check --path=./vendor/bundle || bundle install --path=./vendor/bundle --jobs=4 --retry=3
 
       - save_cache:
           key: has_normalized_attributes-dependencies-v1-{{ checksum "has_normalized_attributes.gemspec" }}
           paths:
             - ./vendor/bundle
-
-      - run:
-          name: Set up database
-          command: |
-            cp spec/db/database.docker.yml spec/db/database.yml
 
       - run:
           name: Run tests
