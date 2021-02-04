@@ -12,5 +12,4 @@ bin/*
 .rbenv-version
 .rbenv-gemsets
 .ruby-gemset
-.ruby-version
 spec/db/test.sqlite3
