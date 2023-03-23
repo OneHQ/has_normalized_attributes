@@ -1,7 +1,7 @@
 module HasNormalizedAttributes
   #CONSTANTS - Do not mix these into ActiveRecord!!!
   ZIPCODE                  = /[-.\s)(,]/
-  PHONE                    = /[-.\s)(,]|(^0)/
+  PHONE                    = /[-.\s)(,]|^(0)|^(\+1)/
   SSN                      = /[-.\s)(,]/
   TAXID                    = /[-.\s)(,]/
   DOLLAR                   = /[$,\s]/

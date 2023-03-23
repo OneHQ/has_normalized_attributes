@@ -7,8 +7,8 @@ ENV['debug'] = 'test' unless ENV['debug']
 
 # Establish DB Connection
 config = YAML::load(IO.read(File.join(File.dirname(__FILE__), 'db', 'database.yml')))
-ActiveRecord::Base.configurations = {'test' => config[ENV['DB'] || 'sqlite3']}
-ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['test'])
+ActiveRecord::Base.configurations = {"test" => config[ENV['DB'] || 'sqlite3']}
+ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations.configs_for(env_name: "test").first)
 
 # Load Test Schema into the Database
 load(File.dirname(__FILE__) + "/db/schema.rb")
