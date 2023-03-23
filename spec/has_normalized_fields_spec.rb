@@ -38,6 +38,9 @@ describe "HasNormalizedAttributes" do
     it{@resource.phone_attr = "1011-111.1111 "; @resource.phone_attr.should == "10111111111"}
     it{@resource.phone_attr = "111-0222.333 "; @resource.phone_attr.should == "1110222333"}
     it{@resource.phone_attr = "111-0222.333\t"; @resource.phone_attr.should == "1110222333"}
+    it{@resource.phone_attr = "+1111-0222.333\t"; @resource.phone_attr.should == "1110222333"}
+    it{@resource.phone_attr = "+1(111)111-1111"; @resource.phone_attr.should == "1111111111"}
+    it{@resource.phone_attr = "+1 111 111 1111"; @resource.phone_attr.should == "1111111111"}
     it{@resource.phone_attr = ""; @resource.phone_attr.should == ""}
     it{@resource.phone_attr = nil; @resource.phone_attr.should == nil}
   end
