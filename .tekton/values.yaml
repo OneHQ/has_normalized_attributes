@@ -1,0 +1,19 @@
+publish: false
+
+gem: &gem has_normalized_attributes
+git:
+  provider: github.com
+  organization: OneHQ
+  repository: *gem
+  # ref:
+  # sha:
+
+global:
+  taskAnnotations: 
+    vault.security.banzaicloud.io/vault-addr: "https://vault.internal.onehq.com"
+    vault.security.banzaicloud.io/vault-path: "jwt"
+    vault.security.banzaicloud.io/vault-auth-method: "jwt"
+    vault.security.banzaicloud.io/vault-tls-secret: "custom-trusted-ca"  
+  gem: *gem
+  rubyVersion: 3.0.2
+  mountGemDockerfile: true 

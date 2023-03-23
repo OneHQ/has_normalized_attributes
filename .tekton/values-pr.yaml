@@ -1,0 +1,9 @@
+publish: false
+delivery:
+  rbac:
+    rolebindings:
+    - role: edit
+      subjects:
+      - kind: Group
+        name: hq-product
+
