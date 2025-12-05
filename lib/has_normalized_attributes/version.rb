@@ -1,3 +1,3 @@
 module HasNormalizedAttributes
-  VERSION = "1.0.2"
+  VERSION = "5.0.0-beta.1"
 end
