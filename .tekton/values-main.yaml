@@ -3,12 +3,12 @@ publish: true
 delivery:
   rbac:
     rolebindings:
-    - role: edit
-      subjects:
-      - kind: Group
-        name: hq-platform
+      - role: edit
+        subjects:
+          - kind: Group
+            name: hq-platform
 
-    - role: view
-      subjects:
-      - kind: Group
-        name: hq-product
+      - role: view
+        subjects:
+          - kind: Group
+            name: hq-product
