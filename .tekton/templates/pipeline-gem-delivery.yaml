@@ -102,7 +102,7 @@ spec:
       when:
         - input: "$(params.publish)"
           operator: in
-          values: ["true"]
+          values: [ "true" ]
       taskRef:
         name: publish-to-gemfury
       runAfter:

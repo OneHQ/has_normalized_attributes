@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  name: {{ .Release.Name }}-{{ .Release.Revision }}
+  name: { { .Release.Name } }-{{ .Release.Revision }}
   annotations:
     "helm.sh/hook": post-upgrade,post-install
 spec:
@@ -21,8 +21,6 @@ spec:
       value: "{{ required "Required .Values.git.ref" .Values.git.ref }}"
     - name: rubyVersion
       value: "{{ .Values.rubyVersion }}"
-  workspaces:
-
 
   pipelineRef:
     name: gem-delivery-has-normalized-attributes
