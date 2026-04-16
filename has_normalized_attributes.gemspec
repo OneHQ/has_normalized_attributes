@@ -38,8 +38,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "database_cleaner",               "~> 2.1"
   s.add_development_dependency "rspec",                          "~> 3.13"
   s.add_development_dependency "rspec_junit_formatter",          "~> 0.6"
-  s.add_dependency "rubocop",                                    "~> 1.81"      # code quality check for sonarqube
-  s.add_dependency "rubocop-performance",                        "~> 1.26"
-  s.add_dependency "rubocop-rails",                              "~> 2.34"
+  s.add_development_dependency "rubocop",                        "~> 1.81"      # code quality check for sonarqube
+  s.add_development_dependency "rubocop-performance",            "~> 1.26"
+  s.add_development_dependency "rubocop-rails",                  "~> 2.34"
   s.add_development_dependency "sqlite3",                        "~> 2.9"
 end
