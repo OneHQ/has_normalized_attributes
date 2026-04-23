@@ -14,3 +14,4 @@ bin/*
 .ruby-gemset
 spec/db/test.sqlite3
 .idea/*
+.DS_Store

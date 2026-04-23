@@ -21,7 +21,6 @@ spec:
       value: "{{ required "Required .Values.git.ref" .Values.git.ref }}"
     - name: rubyVersion
       value: "{{ .Values.rubyVersion }}"
-  workspaces:
 
 
   pipelineRef:
