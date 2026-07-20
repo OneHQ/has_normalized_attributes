@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   DESC
   s.homepage = "https://github.com/kylejginavan/has_normalized_attributes"
 
-  s.required_ruby_version = ">= 3.0.0", "< 4.0.0"
+  s.required_ruby_version = ">= 3.4.0", "< 4.0.0"
   s.files = Dir.chdir(__dir__) do
     `git ls-files -z`.split("\x0").reject do |f|
       f.match?(%r{\A(?:test|spec|features)/}) ||
