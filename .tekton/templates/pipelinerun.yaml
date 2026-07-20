@@ -8,7 +8,7 @@ spec:
   serviceAccountName: build-bot
   params:
     - name: ci-image-name
-      value: us-docker.pkg.dev/onehq-production/onehq/{{ .Values.gem }}-ci
+      value: onehq.azurecr.io/{{ .Values.gem }}-ci
     - name: gem-name
       value: "{{ .Values.gem }}"
     - name: publish
@@ -21,8 +21,6 @@ spec:
       value: "{{ required "Required .Values.git.ref" .Values.git.ref }}"
     - name: rubyVersion
       value: "{{ .Values.rubyVersion }}"
-
-
   pipelineRef:
     name: gem-delivery-has-normalized-attributes
   timeout: 1h30m0s
@@ -34,7 +32,6 @@ spec:
             - serviceAccountToken:
                 path: oidc-token
                 expirationSeconds: 1800
-
   workspaces:
     - name: git-source
       volumeClaimTemplate:

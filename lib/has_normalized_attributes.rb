@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 module HasNormalizedAttributes
-  #CONSTANTS - Do not mix these into ActiveRecord!!!
-  ZIPCODE                  = /[-.\s)(,]/
-  PHONE                    = /[-.\s)(,]|^(0)|^(\+1)/
-  SSN                      = /[-.\s)(,]/
-  TAXID                    = /[-.\s)(,]/
-  DOLLAR                   = /[$,\s]/
-  NUMBER                   = /[,\s]/
-  PERCENT                  = /[%,\s]/
-  SPACES                   = /\s/
+  # CONSTANTS - Do not mix these into ActiveRecord!!!
+  ZIPCODE = /[-.\s)(,]/
+  PHONE = /[-.\s)(,]|^(0)|^(\+1)/
+  SSN = /[-.\s)(,]/
+  TAXID = /[-.\s)(,]/
+  DOLLAR = /[$,\s]/
+  NUMBER = /[,\s]/
+  PERCENT = /[%,\s]/
+  SPACES = /\s/
 
   module CoreExtensions
     extend ActiveSupport::Concern
 
     # Prepending a dynamically defined module to add functionality to the current normalize_ methods.
     # This is similar to alias_method_chain, but accomplished in a cleaner way using inheritance.
-    prepend Module.new {
+    prepend(Module.new do
       def self.normalizations(*args)
         args.each do |arg|
           # Convert outer parentheses into a negative (-) sign on the result of the super method.
@@ -28,9 +30,9 @@ module HasNormalizedAttributes
       end
 
       normalizations :number, :dollar
-    }
+    end)
 
-    #instance methods
+    # instance methods
     def self.normalizations(*args)
       args.each do |arg|
         define_method "normalize_#{arg}" do
@@ -38,13 +40,13 @@ module HasNormalizedAttributes
             self && self.respond_to?(:strip) ? self.strip : self
           else
             reg_exp = HasNormalizedAttributes.const_get(arg.upcase)
-            self && is_a?(String) && match(reg_exp) ? gsub(reg_exp,'') : self
+            self && is_a?(String) && match(reg_exp) ? gsub(reg_exp, "") : self
           end
         end
       end
     end
 
-    #loading all methods dynamically
+    # loading all methods dynamically
     normalizations :phone, :zipcode, :ssn, :taxid, :dollar, :number, :percent, :spaces, :strip
   end
 
@@ -53,13 +55,12 @@ module HasNormalizedAttributes
 
     module ClassMethods
       def has_normalized_attributes(args = {})
-
         if args.blank? || !args.is_a?(Hash)
           raise ArgumentError, 'Must define the fields you want to be normalize with has_normalized_attributes :field_one => "phone", :field_two => "zipcode"'
         end
 
         args.each do |field, normalization_type|
-          define_method "#{field.to_s}=" do |value|
+          define_method "#{field}=" do |value|
             if value.present?
               normalized_value = value.send("normalize_#{normalization_type.downcase}".to_sym)
             else
@@ -68,15 +69,14 @@ module HasNormalizedAttributes
             super normalized_value
           end
         end
-
       end
     end
   end
 end
 
-#extend these classes - Numeric is a parent class for all of Ruby's numeric types.
+# extend these classes - Numeric is a parent class for all of Ruby's numeric types.
 [String, Numeric, NilClass].each do |klass|
   klass.send(:include, HasNormalizedAttributes::CoreExtensions)
 end
-#include activerecord
-ActiveRecord::Base.send :include, HasNormalizedAttributes::ActiveRecord
+# include activerecord
+ActiveRecord::Base.include HasNormalizedAttributes::ActiveRecord
