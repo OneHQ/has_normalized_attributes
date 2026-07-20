@@ -25,8 +25,8 @@ jobs:
 
       - restore_cache:
           keys:
-          - has_normalized_attributes-dependencies-v1-{{ checksum "has_normalized_attributes.gemspec" }}
-          - has_normalized_attributes-dependencies-v1-
+            - has_normalized_attributes-dependencies-v1-{{ checksum "has_normalized_attributes.gemspec" }}
+            - has_normalized_attributes-dependencies-v1-
 
       - run:
           name: Install dependencies
@@ -65,8 +65,8 @@ jobs:
 
       - restore_cache:
           keys:
-          - has_normalized_attributes-dependencies-v1-{{ checksum "has_normalized_attributes.gemspec" }}
-          - has_normalized_attributes-dependencies-v1-
+            - has_normalized_attributes-dependencies-v1-{{ checksum "has_normalized_attributes.gemspec" }}
+            - has_normalized_attributes-dependencies-v1-
 
       - run:
           name: Install dependencies
