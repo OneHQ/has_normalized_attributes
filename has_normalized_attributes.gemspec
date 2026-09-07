@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.executables      = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
 
-  s.add_development_dependency "activerecord",                   "~> 7.2"
+  s.add_dependency "activerecord",                               "~> 8.0.0"
   s.add_development_dependency "byebug",                         "~> 12.0"
   s.add_development_dependency "database_cleaner",               "~> 2.1"
   s.add_development_dependency "rspec",                          "~> 3.13"

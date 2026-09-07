@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "active_record"
+require "active_support/concern"
+
 module HasNormalizedAttributes
   # CONSTANTS - Do not mix these into ActiveRecord!!!
   ZIPCODE = /[-.\s)(,]/
