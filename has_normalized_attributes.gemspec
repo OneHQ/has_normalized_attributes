@@ -33,6 +33,12 @@ Gem::Specification.new do |s|
   s.executables      = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
 
+  # ActiveSupport 8.0 passes quirks_mode, which JSON 3 rejects.
+
+
+  s.add_dependency "json", "< 3"
+
+
   s.add_dependency "activerecord",                               "~> 8.0.0"
   s.add_development_dependency "byebug",                         "~> 12.0"
   s.add_development_dependency "database_cleaner",               "~> 2.1"
