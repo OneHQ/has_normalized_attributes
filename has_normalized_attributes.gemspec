@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
   s.add_dependency "json", "< 3"
 
 
-  s.add_dependency "activerecord",                               "~> 8.0.0"
+  s.add_dependency "activerecord",                               ">= 8.0", "< 8.2"
   s.add_development_dependency "byebug",                         "~> 12.0"
   s.add_development_dependency "database_cleaner",               "~> 2.1"
   s.add_development_dependency "rspec",                          "~> 3.13"
